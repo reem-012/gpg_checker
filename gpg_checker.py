@@ -117,7 +117,7 @@ def write_array_to_csv(data, headers, output_file, allow_clobber):
 
 def main():
 
-    ## Lets get our args here before we pass them into main
+    ## Lets set some of our args
     parser = argparse.ArgumentParser(description="Checks a Directory And Looks for any GPG encrypted files")
     parser.add_argument("-d", "--directory",help="The directory to check", required=True)
     parser.add_argument("-r", "--recursive", action="store_true", 
@@ -164,6 +164,7 @@ def main():
     # Print the table if we don't supress the output 
     if(not SUPRESS):
         print(tabulate(result_array, headers))
+    # Write to file if we have that arg selected
     if(OUTFILE_PATH):
         write_array_to_csv(result_array, headers, OUTFILE_PATH, ALLOW_CLOBBER)
 
